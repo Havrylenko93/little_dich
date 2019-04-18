@@ -11,11 +11,10 @@ class ChristmasTree implements ChristmasTreeInterface
 {
     public function printTree(int $bottomSize): void
     {
-        $levels =[];
-        $iterations = ($bottomSize % 2 === 0) ? ($bottomSize/2) : (($bottomSize + 1) / 2);
+        $levels = [];
 
         for (
-            $i = 0, $j = $bottomSize;
+            $i = 0, $j = $bottomSize, $iterations = $bottomSize / 2;
             $i < $iterations;
             $j -= 2, $i++
         ) {
@@ -32,5 +31,5 @@ class ChristmasTree implements ChristmasTreeInterface
 }
 
 $obj = new ChristmasTree();
-$obj->printTree(47);
+$obj->printTree(27);
 
