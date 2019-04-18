@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-interface ChristmasTreeInterface
+interface PyramidInterface
 {
-    public function printTree(int $bottomSize): void;
+    public function printPyramid(int $bottomSize = 21, string $symbolDraw = '*', $symbolRowEnd = PHP_EOL): void;
 }
 
-class ChristmasTree implements ChristmasTreeInterface
+class Pyramid implements PyramidInterface
 {
-    public function printTree(int $bottomSize): void
+    public function printPyramid(int $bottomSize = 21, string $symbolDraw = '*', $symbolRowEnd = PHP_EOL): void
     {
         $levels = [];
 
@@ -18,18 +18,18 @@ class ChristmasTree implements ChristmasTreeInterface
             $i < $iterations;
             $j -= 2, $i++
         ) {
-            $currentString = str_repeat('*', $j);
+            $currentString = str_repeat($symbolDraw, $j);
 
             if ($i !== 0) {
                 $offset = (($bottomSize - $j) / 2);
                 $currentString = str_repeat(' ', $offset) . $currentString . str_repeat(' ', $offset);
             }
-            $levels[] = $currentString . PHP_EOL;
+            $levels[] = $currentString . $symbolRowEnd;
         }
         echo implode('', array_reverse($levels));
     }
 }
 
-$obj = new ChristmasTree();
-$obj->printTree(27);
+$obj = new Pyramid();
+$obj->printPyramid();
 
